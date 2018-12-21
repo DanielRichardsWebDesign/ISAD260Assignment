@@ -8,6 +8,9 @@
 
         <!--JQuery Script-->
         <script src="jquery-3.3.1.min.js"></script>
+
+        <!--AJAX Script-->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
         
         <title>Social Media Site - Profile Page</title>
 
@@ -27,11 +30,10 @@
             <div class="row">
                 <!--Profile Image Container-->
                 <div class="col-md-6">
-                    <img class="img-thumbnail profile-picture" src="img/social_media.jpg" alt="profile_pic" class="float-left">
-                    <div class="p-image">
-                        <i class="fa fa-camera upload-button"></i>
-                        <input class="file-upload" type="file" accept="image/*"/>
-                    </div>
+                    <img class="profile-picture" id="profile-img" src="img/user-icon.jpg" alt="profile_pic" class="float-left">                   
+                        <i class="fa fa-camera upload-button">
+                            <input class="file-upload" type="file" accept="image/*" onchange="readURL(this)"/>
+                        </i>    
                     <h3>Profile</h3>
                     <a class="btn btn-warning text-white" href="edit-profile.html">Edit Profile Details</a>
                 </div>
@@ -55,7 +57,22 @@
 </html>
 
 <!--Profile Picture Upload Script-->
-<script>
+<script type="text/javascript">
+
+//Script for previewing new profile image
+function readURL(input){
+
+    if(input.files && input.files[0]){
+        var reader = new FileReader();
+
+        reader.onload = function(e){
+            $('#profile-img').attr('src', e.target.result);
+            $('#profile-img').show;            
+        }
+
+        reader.readAsDataURL(input.files[0]);
+    }
+}
 
 </script>
 <!--End of Profile Picture Upload Script-->
