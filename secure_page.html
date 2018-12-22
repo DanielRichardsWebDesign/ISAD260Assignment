@@ -30,7 +30,7 @@
             <div class="row">
                 <!--Profile Image Container-->
                 <div class="col-md-6">
-                    <img class="profile-picture" id="profile-img" src="img/user-icon.jpg" alt="profile_pic" class="float-left">                   
+                    <img class="profile-picture img-thumbnail" id="profile-img" src="img/user-icon.jpg" alt="profile_pic" class="float-left">                   
                         <i class="fa fa-camera upload-button">
                             <input class="file-upload" type="file" accept="image/*" onchange="readURL(this)"/>
                         </i>    
@@ -39,16 +39,16 @@
                 </div>
                 <!--End of Profile Image Container-->
 
-                <!--Login / Signup Box-->
+                <!--User Details Box-->
                 <div class="col-md-6" style="background-color: #655BFF; border-radius: 25px;">
-                    <div class="container text-white">
-                        <h3 class="">Login or Sign Up!</h3>
-                        <a class="btn btn-success btn-lg" href="login.html">Login</a>
-                        <p>Don't have an account? You can create one for free now by clicking on the button below!</p>
-                        <a class="btn btn-warning btn-lg text-white" href="sign-up.html">Sign Up For Free</a>
+                    <div class="container text-white" id="user-details">
+                        <h3 class="">User Details</h3>
+                        <p id="user">User: </p>
+                        <p id="email">Email: </p>
+                        <p id="pass">Password: </p>                                          
                     </div>
                 </div>
-                <!--End of Login / Signup Box-->
+                <!--User Details Box-->
                 
             </div>
         </div>
@@ -56,7 +56,7 @@
     </body>
 </html>
 
-<!--Profile Picture Upload Script-->
+<!--Script tags-->
 <script type="text/javascript">
 
 //Script for previewing new profile image
@@ -74,5 +74,13 @@ function readURL(input){
     }
 }
 
+//Script for showing saved user details
+function displayDetails(){
+    var userDetailsBox = document.getElementById("user-details");
+    var userData = sessionStorage.getItem(email, username, password);
+
+    userDetails.innerHTML = "Email: "+email+"<br />Username: "+username+"<br />Password: "+password;  
+}
+
 </script>
-<!--End of Profile Picture Upload Script-->
+<!--End of scripts-->
