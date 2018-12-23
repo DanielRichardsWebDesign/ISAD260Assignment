@@ -19,8 +19,10 @@
                 <h1 class="text-white text-center mt-5">Login</h1>
                 
                 <!--Login Form-->
-                <form>
+                <form name="login">
                     <div class="form-group">
+                        <!--Display error message if user inputs data wrong-->
+                        <div id="error" class="text-danger"></div>
                         <label for="emailInput" class="text-white">Email:</label>
                         <input type="email" class="form-control" id="userEmail" placeholder="Enter Email">
                     </div>
@@ -28,13 +30,32 @@
                         <label for="passwordInput" class="text-white">Password:</label>
                         <input type="password" class="form-control" id="userPassword" placeholder="Enter Password">
                     </div>
-                    <button type="submit" class="btn btn-success mb-5" style="width: 100%">Login</button>                
+                    <button type="submit" class="btn btn-success mb-5" style="width: 100%" onsubmit="validate()">Login</button>                
                 </form>
                 <!--End of Login Form-->
                 
             </div>
         </div>
         <!--End of Page Contents-->
+
+        <!--Login Error Checker-->
+        <script type="text/javascript">
+        function validate(){
+            if(login.userEmail.value.length == 0){
+                document.getElementById('error').innerHTML="User have entered an invalid email. Please re-enter details and resubmit.";
+            }
+
+            if(login.userPassword.value.length == 0){
+                document.getElementById('error').innerHTML="You have entered an invalid password. Please re-enter details and resubmit.";
+            }
+
+            //Redirects to secure page if login details are correct
+            else{
+                window.location.replace("secure_page.html");
+            }
+        }
+        </script>
+        <!--End of Login Error Checker-->
 
     </body>
 </html>

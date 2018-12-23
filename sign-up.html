@@ -21,6 +21,8 @@
                 <!--Sign Up Form-->
                 <form action="secure_page.html">
                     <div class="form-group">
+                        <!--Display error message if user inputs data wrong-->
+                        <div id="error" class="text-danger"></div>
                         <label for="emailInput" class="text-white">Email:</label>
                         <input type="email" class="form-control" id="userEmail" placeholder="Enter Email" required>
                     </div>
@@ -56,6 +58,23 @@
         }
 
         window.addEventListener("load", doFirst, false);
+
+        function validate(){
+            if(login.userEmail.value.length == 0){
+                document.getElementById('error').innerHTML="User have entered an invalid email. Please re-enter details and resubmit.";
+            }
+
+            if(login.userPassword.value.length == 0){
+                document.getElementById('error').innerHTML="You have entered an invalid password. Please re-enter details and resubmit.";
+            }
+
+            //Redirects to secure page if login details are correct
+            else{
+                window.location.replace("secure_page.html");
+            }
+        }
+        </script>
+        <!--End of Login Error Checker-->
 
     </script>
 </html>
